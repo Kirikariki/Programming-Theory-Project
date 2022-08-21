@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEditor;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class StartMenuUI : MonoBehaviour
 {
-    // to be set in Unity
+    // To be set in Unity
     public TMP_InputField nameInput;
     public Button startButton;
 
@@ -20,7 +21,8 @@ public class StartMenuUI : MonoBehaviour
         }
     }
 
-    // POLYMORPHISM - method overload
+    // POLYMORPHISM
+    // Method overload - the given parameter(s) determine which SetPlayerName method will be executed
     /// <summary>
     /// Gets the player name from the name input field and sets it to the persistence instance
     /// </summary>
@@ -44,8 +46,7 @@ public class StartMenuUI : MonoBehaviour
     /// </summary>
     public void StartGame()
     {
-        // TODO implement start game function
-        Debug.LogWarning("Not yet implemented - start game as: " + Persistence.Instance.PlayerName);
+        SceneManager.LoadScene(1);
     }
 
     /// <summary>
