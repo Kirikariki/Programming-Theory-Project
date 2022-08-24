@@ -22,6 +22,9 @@ public class Plane : ShootableBase
     // Overrides abstract method of parent class with individual implementation
     protected override Vector3 RandomStartPosition()
     {
+        Quaternion lookDirection = transform.rotation;
+        lookDirection.SetLookRotation(moveDirection);
+        transform.rotation = lookDirection;
         float posX = moveDirection.x < 0 ? RandomPos(boundX, false) : -RandomPos(boundX, false);
         return new(posX, RandomPos(boundY, true), Random.Range(3, 6));
     }
