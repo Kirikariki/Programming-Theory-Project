@@ -5116,7 +5116,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.30479312
-  m_Center: {x: -0.000000014901161, y: 0.08079566, z: 0.000000052154064}
+  m_Center: {x: 0, y: 0.05, z: 0}
 --- !u!4 &6091573162847443645 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4365822735766138, guid: 666ff701b211d6440b7bd44aa7b3abfa, type: 3}

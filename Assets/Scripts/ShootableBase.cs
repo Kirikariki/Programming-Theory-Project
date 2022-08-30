@@ -70,6 +70,10 @@ public abstract class ShootableBase : MonoBehaviour
     /// TODO: implement effects of destroying shootables (eg. give points to player)
     protected void Explode()
     {
+        if (deactivationTriggered)
+        {
+            return;
+        }
         deactivationTriggered = true;
         mesh.SetActive(false);
         explosion.Play();

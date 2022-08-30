@@ -37,8 +37,8 @@ public class Bomb : ShootableBase
     {
         if (!deactivationTriggered && other.CompareTag("Ground"))
         {
+            Explode();
             gameManager.AddHealth(-4);
-            DeactivateGameObject();
         }
         else if (other.CompareTag("Boundary"))
         {
