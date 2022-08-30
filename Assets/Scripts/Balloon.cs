@@ -4,6 +4,9 @@ using UnityEngine;
 
 // INHERITANCE
 // Balloon inherits features of ShootableBase. No need to rewrite/copy code from parent class(es).
+/// <summary>
+/// Inherits from ShootableBase and adds individual features
+/// </summary>
 public class Balloon : ShootableBase
 {
     // POLYMORPHISM
@@ -22,5 +25,13 @@ public class Balloon : ShootableBase
     protected override Vector3 RandomStartPosition()
     {
         return new(RandomPos(boundX, true), -RandomPos(boundY, false), Random.Range(1, 5));
+    }
+
+    // POLYMORPHISM
+    // Adds individual functionality to existing method of parent class
+    protected override void AddPlayerReward()
+    {
+        gameManager.AddHealth(1);
+        base.AddPlayerReward();
     }
 }

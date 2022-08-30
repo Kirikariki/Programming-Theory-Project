@@ -2,23 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles activation/instantiation and deactivation of various shootable objects
+/// </summary>
 public class ObjectPooler : MonoBehaviour
 {
-    [SerializeField] private GameObject[] shootablePrefabs;
-    private ObjectPool[] objectPools;
+    [SerializeField] private GameObject[] shootablePrefabs;     // shootable prefabs to be used in game
+    private ObjectPool[] objectPools;                           // object pools for shootable objects
 
     // Start is called before the first frame update
     void Start()
     {
+        // initialize object pools
         int length = shootablePrefabs.Length;
         objectPools = new ObjectPool[length];
         for (int i = 0; i < length; i++)
         {
             objectPools[i] = new(shootablePrefabs[i], this.gameObject);
         }
-
-        // TODO remove this line after implementing spawn manager
-        InvokeRepeating(nameof(SpawnShootable), 1f, 1f);
     }
 
     // ABSTRACTION
@@ -32,10 +33,13 @@ public class ObjectPooler : MonoBehaviour
         objectPools[rand].SpawnObject();
     }
 
+    /// <summary>
+    /// Handles activation/instantiation and deactivation of one type of shootable objects
+    /// </summary>
     private class ObjectPool
     {
-        private readonly List<ShootableBase> shootables;
-        private readonly GameObject prefab, parent;
+        private readonly List<ShootableBase> shootables;    // list with all instantiated shootables in this object pool
+        private readonly GameObject prefab, parent;         // shootable prefab to instantiate, parent to add instantiated objects to
 
         /// <summary>
         /// Creates an object pool for the given prefab. Instantiated prefabs will be children of the given parent.

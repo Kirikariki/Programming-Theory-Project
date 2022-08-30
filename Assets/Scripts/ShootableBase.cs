@@ -5,6 +5,9 @@ using UnityEngine;
 // INHERITANCE
 // ShootableBase serves as parent class for Plane, Bomb and Balloon classes
 // All inheriting classes will have access to the protected and public fields/methods of this class
+/// <summary>
+/// Handles basic behaviour of shootable objects
+/// </summary>
 public abstract class ShootableBase : MonoBehaviour
 {
     // To be set in Unity
@@ -17,6 +20,7 @@ public abstract class ShootableBase : MonoBehaviour
 
     // initialized in Start method
     protected Rigidbody rb;
+    protected GameManager gameManager;
 
     // object variables - initialized in Initialize method
     protected Vector3 moveDirection = new();
@@ -28,6 +32,7 @@ public abstract class ShootableBase : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        gameManager = FindObjectOfType<GameManager>();
         Initialize();
     }
 
@@ -78,7 +83,7 @@ public abstract class ShootableBase : MonoBehaviour
     /// TODO: implement effects of destroying shootables (eg. give points to player)
     protected virtual void AddPlayerReward()
     {
-        Debug.Log("TODO - Add points: " + points + " for " + gameObject.name);
+        gameManager.AddPoints(points);
     }
 
     // ABSTRACTION
