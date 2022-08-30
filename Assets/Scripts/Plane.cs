@@ -4,8 +4,12 @@ using UnityEngine;
 
 // INHERITANCE
 // Plane inherits features of ShootableBase. No need to rewrite/copy code from parent class(es).
+/// <summary>
+/// Inherits from ShootableBase and adds individual features
+/// </summary>
 public class Plane : ShootableBase
 {
+    // min and max movement speed of Plane
     private readonly float minSpeed = 1000f;
     private readonly float maxSpeed = 3000f;
 

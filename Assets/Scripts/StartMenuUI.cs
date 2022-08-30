@@ -6,6 +6,9 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Handles Start Menu functionality
+/// </summary>
 public class StartMenuUI : MonoBehaviour
 {
     // To be set in Unity

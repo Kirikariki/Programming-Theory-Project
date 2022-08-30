@@ -4,8 +4,12 @@ using UnityEngine;
 
 // INHERITANCE
 // Bomb inherits features of ShootableBase. No need to rewrite/copy code from parent class(es).
+/// <summary>
+/// Inherits from ShootableBase and adds individual features
+/// </summary>
 public class Bomb : ShootableBase
 {
+    // min and max sideways speed of bomb
     private readonly float minSpeed = 0f;
     private readonly float maxSpeed = 250f;
 
@@ -33,7 +37,7 @@ public class Bomb : ShootableBase
     {
         if (!deactivationTriggered && other.CompareTag("Ground"))
         {
-            Debug.LogWarning("Bomb hit bottom!!!");
+            gameManager.AddHealth(-4);
             DeactivateGameObject();
         }
         else if (other.CompareTag("Boundary"))
